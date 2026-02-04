@@ -1,0 +1,5 @@
+AIDS | SY | B | 03
+Comp | SY | H | 05
+AIDS | TY | A | 07
+Comp | sy | F | 25
+COMP | SY | F | 43

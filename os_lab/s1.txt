@@ -1,0 +1,5 @@
+Comp | F 
+Comp | H 
+COMP | F 
+AIDS | A 
+AIDS | B 

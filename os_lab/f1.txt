@@ -1,1 +1,10 @@
 This is a f1 text file
+This is for the OS Lab
+It contains sample texts
+We are from Batch 3 students
+Subjects present:
+OS
+Ds
+TOC
+SE
+RAAD
