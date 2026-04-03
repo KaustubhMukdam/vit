@@ -1,0 +1,23 @@
+import 'package:flutter/material.dart';
+// Important: Make sure this import path matches where you saved products_page.dart
+import 'products_page.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Store App',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      ),
+      // Here is where we connect the front door to your new UI page!
+      home: const ProductsPage(),
+    );
+  }
+}
