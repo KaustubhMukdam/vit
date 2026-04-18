@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'models/Product.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'main.dart';
 
 class ProductsPage extends StatefulWidget {
   const ProductsPage({super.key});
@@ -234,6 +236,27 @@ class _ProductsPageState extends State<ProductsPage> {
       appBar: AppBar(
         title: const Text('Store Products'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        actions: [
+          // LOGOUT BUTTON
+          IconButton(
+            icon: const Icon(Icons.logout),
+            tooltip: 'Log out',
+            onPressed: () async {
+              // 1. Access SharedPreferences
+              final prefs = await SharedPreferences.getInstance();
+              // 2. Clear the login state (or clear everything with prefs.clear())
+              await prefs.setBool('isLoggedIn', false);
+              
+              if (context.mounted) {
+                // 3. Kick user back to the Login Page
+                Navigator.pushReplacement(
+                  context, 
+                  MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Login'))
+                );
+              }
+            },
+          )
+        ],
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
