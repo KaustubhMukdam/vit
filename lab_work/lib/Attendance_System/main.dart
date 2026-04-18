@@ -1,8 +1,8 @@
 //Our work is to add a button below the login and signup and then in that content button, we should be able to add the attendance list view where we have to toggle the "P" and "A" at the attendance and then it should be persistent till that session and after we end the session and restart, then we should get back to the original attendance list (hardcoded) as it was earlier.
 import 'package:flutter/material.dart';
-import 'package:lab_work/Content.dart';
-import 'package:lab_work/utility.dart';
-import 'package:lab_work/register_page.dart';
+import 'Content.dart';
+import 'utility.dart';
+import 'register_page.dart';
 
 
 void main() {

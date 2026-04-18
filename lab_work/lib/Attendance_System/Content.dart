@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lab_work/configurations.dart';
+import 'configurations.dart';
 
 enum ToggleMode { direct, dialog }
 
