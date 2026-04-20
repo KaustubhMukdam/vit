@@ -29,7 +29,6 @@ class Utility {
   }
 
   static bool validateSymbol(String text) {
-    // Matches special characters including those from your screenshot
     return RegExp(r"[!@#\$%^&*(),.?\':{}|<>]").hasMatch(text);
   }
 
