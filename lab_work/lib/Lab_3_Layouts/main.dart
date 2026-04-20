@@ -259,10 +259,10 @@ class _LayoutsAndStylingPageState extends State<LayoutsAndStylingPage> {
                       style: TextStyle(fontSize: 14, color: Colors.black87),
                     ),
                     SizedBox(height: 8),
-                    Text(
-                      '• Expanded: Not used here, but makes children fill available space',
-                      style: TextStyle(fontSize: 14, color: Colors.black87),
-                    ),
+                    // Text(
+                    //   '• Expanded: Not used here, but makes children fill available space',
+                    //   style: TextStyle(fontSize: 14, color: Colors.black87),
+                    // ),
                     SizedBox(height: 8),
                     Text(
                       '• SizedBox: Fixed dimensions for spacing & button height',

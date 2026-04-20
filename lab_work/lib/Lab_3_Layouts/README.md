@@ -2,7 +2,7 @@
 
 ## What Lab Assignments It Covers
 - **Lab-3:** Layouts and Styling
-  - Using layout widgets: Stack, Expanded, SizedBox
+  - Using layout widgets: Stack, SizedBox
   - Styling UI elements with themes, colors, and fonts
   - Designing a basic login screen with professional appearance
 
