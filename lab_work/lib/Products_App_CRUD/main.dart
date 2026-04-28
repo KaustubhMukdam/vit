@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// Important: Make sure this import path matches where you saved products_page.dart
 import 'products_page.dart';
 
 void main() {
