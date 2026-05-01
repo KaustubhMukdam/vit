@@ -1,0 +1,21 @@
+Run summary
+
+Jobs: 1 (one $AMJ … $DTA … $END job processed in the shown run).
+Cards used:
+Control cards: $AMJ, $DTA, $END (3).
+Program cards: GD10, PD10, H*** (3).
+Data cards: 1 data card (the data loaded and later written).
+Card names (observed in the run): $AMJ, GD10, PD10, H***, $DTA, (data line), $END.
+Instruction set (OS Phase‑I / simulator)
+
+Kernel I/O opcodes: GD (Read), PD (Write), H (Halt/Terminate)
+User-mode instructions: LR (Load Register), SR (Store Register), CR (Compare Register), BT (Branch on Toggle)
+MOS services (handling SI): READ, WRITE, TERMINATE
+How program & data cards are stored in memory
+
+Program cards: Loaded sequentially starting at memory address M[0]. Each memory cell M[i] holds 4 characters; program text is written into successive M[0], M[1], … and the loader advances the pointer m in 10-word (block) boundaries (blocks of 10 memory words).
+Data cards: On a GD instruction the kernel reads a data card into the memory block whose starting address is the instruction operand. The code writes up to 10 memory words starting at M[operand] (i.e., M[10]..M[19] for operand 10), placing 4 chars per M cell and padding with * for unused bytes.
+Which block was used in the shown run
+
+The program was loaded into M[00]..M[02] (M[00]=GD10, M[01]=PD10, M[02]=H***).
+The data card was read into block starting at M[10] (M[10]..), producing M[10]=HELL, M[11]=OWOR, M[12]=LD** as shown in the memory dump.

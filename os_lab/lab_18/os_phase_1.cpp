@@ -31,7 +31,7 @@ int main() {
     cout << "\n[STEP 1] Starting OS Phase-I...\n";
     
     ifstream infile("input.txt");
-    ofstream outfile("output.txt", ios::out); // Open output file in write mode
+    ofstream outfile("output.txt", ios::out); 
 
     if (!infile.is_open()) {
         cerr << "Cannot open 'input.txt' file. Verification failed.\n";
@@ -44,7 +44,6 @@ int main() {
     
     cout << "Files opened. Initiating Machine Cycle...\n";
 
-    // Loop allows multiple jobs to be processed consecutively if present
     while (!infile.eof()) {
         LOAD(infile, outfile);
         if (infile.eof()) break; 
@@ -120,10 +119,10 @@ void LOAD(ifstream &infile, ofstream &outfile) {
     }
 }
 
-// STARTEXECUTION (User Mode CPU Simulation)
+// STARTEXECUTION
 void STARTEXECUTION(ifstream &infile, ofstream &outfile) {
     cout << "\n[STEP 5] Starting STARTEXECUTION Cycle...\n";
-    IC = 0; // Initialize Instruction Counter
+    IC = 0;
 
     while (true) {
         // 1. Fetch Instruction into IR
@@ -133,9 +132,8 @@ void STARTEXECUTION(ifstream &infile, ofstream &outfile) {
         cout << "\n  [CPU] Fetched IR: " << IR[0] << IR[1] << IR[2] << IR[3] 
              << " from IC=" << (IC < 10 ? "0" : "") << IC << "\n";
         
-        IC++; // Increment counter immediately after fetch
+        IC++; 
 
-        // Extract Opcode
         char op1 = IR[0];
         char op2 = IR[1];
 
@@ -151,10 +149,9 @@ void STARTEXECUTION(ifstream &infile, ofstream &outfile) {
         else if (op1 == 'H') {
             SI = 3;
             MOS(infile, outfile);
-            break; // Terminate execution loop for current job
+            break;
         }
         else {
-            // Non-interrupt instructions (LR, SR, CR, BT) run directly in User Mode
             int operand = 0;
             if (isdigit(IR[2]) && isdigit(IR[3])) {
                 operand = (IR[2] - '0') * 10 + (IR[3] - '0');
@@ -215,8 +212,7 @@ void READ(ifstream &infile) {
     if (infile.getline(Buffer, 41)) {
         int len = strlen(Buffer);
         int b_idx = 0;
-        
-        // Transfer Buffer to Memory, padding with *
+
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 4; j++) {
                 if (b_idx < len) M[operand + i][j] = Buffer[b_idx++];
@@ -233,14 +229,12 @@ void WRITE(ofstream &outfile) {
     
     int b_idx = 0;
     
-    // Transfer Memory to Buffer
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 4; j++) {
             Buffer[b_idx++] = M[operand + i][j];
         }
     }
     
-    // Write Buffer to Output File (Skipping the * padding for clean output)
     for (int i = 0; i < 40; i++) {
         if (Buffer[i] != '*') {
             outfile << Buffer[i];
